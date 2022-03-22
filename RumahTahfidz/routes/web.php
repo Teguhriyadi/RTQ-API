@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ContohController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfilController;
 /** @var \Laravel\Lumen\Routing\Router $router */
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,15 @@ use App\Http\Controllers\ContohController;
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    // return $router->app->version();
+    header('Location: http://rtq-freelance.my.id/');
+    die;
 });
 
-// $router->get('contoh', 'ContohController@index');
-$router->get('contoh', 'ContohController@coba');
+// $router->get('api-v1/contoh/', 'ContohController@coba');
+
+$router->post('api-v1/login/', 'AuthController@login');
+
+$router->group(['middleware' => 'auth'], function () use ($router) {
+    $router->get('api-v1/profil/user/detail', 'ProfilController@detail');
+});
