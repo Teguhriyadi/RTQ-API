@@ -36,7 +36,7 @@ class AuthServiceProvider extends ServiceProvider
         //     }
         // });
         $this->app['auth']->viaRequest('api', function ($request) {
-            $token = $request->header('api_rtq');
+            $token = $request->header('Authorization');
             if ($token) {
                 return User::where('token', $token)->first();
             }
