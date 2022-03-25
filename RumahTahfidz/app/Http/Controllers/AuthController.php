@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Role;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -41,6 +42,10 @@ class AuthController extends Controller
         $user->update([
             'token' => $token
         ]);
+
+        $role = Role::where('id', $user->id_role)->first();
+
+        $user['keterangan'] = $role->keterangan;
 
         return response()->json($user);
     }
