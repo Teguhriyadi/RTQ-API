@@ -37,7 +37,7 @@ class AuthController extends Controller
             return response()->json(['message' => 'Login failed!'], 401);
         }
 
-        $token = bin2hex(random_bytes(40));
+        $token = $user->createToken('auth_token')->plainTextToken;
 
         $user->update([
             'token' => $token
