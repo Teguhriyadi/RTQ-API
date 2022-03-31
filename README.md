@@ -8,8 +8,8 @@
 </br>
 
 ## FrameWork
-<img align="left" alt="Laravel" width="36px" src="https://iconape.com/wp-content/files/it/371170/svg/371170.svg" style="padding-right:10px;" />
 
+<img align="left" alt="Laravel" width="36px" src="https://iconape.com/wp-content/files/it/371170/svg/371170.svg" style="padding-right:10px;" />
 
 </br>
 </br>
