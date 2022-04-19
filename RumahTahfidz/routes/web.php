@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\JenjangController;
-use App\Http\Controllers\AbsensiPengajarController;
+use App\Http\Controllers\AbsensiAsatidzController;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 /*
@@ -42,5 +42,8 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
     $router->get('api-v1/santri/view/{id_cabang}/{id_jenjang}', 'SantriController@viewByNCabang');
 
-    $router->post('api-v1/absensi/pengajar', 'AbsensiPengajarController@create');
+    $router->post('api-v1/absensi/asatidz', 'AbsensiAsatidzController@create');
 });
+
+// $router->get('coba', 'ContohController@coba');
+// $router->post('coba', 'ContohController@postCoba');

@@ -9,7 +9,7 @@ class Absensi extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_absensi_pengajar";
+    protected $table = "tb_absensi_asatidz";
 
-    protected $guarded = ['created_at', 'updated_at'];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 }

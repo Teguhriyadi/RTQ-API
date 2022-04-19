@@ -2,43 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Absensi;
-use App\Models\Asatidz;
-use App\Models\Contoh;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
-class ContohController extends Controller
+use App\Models\Absensi;
+
+class AbsensiAsatidzController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
-    public function coba()
+    public function create(Request $request)
     {
-        $data['coba'] = Absensi::all();
-        return view('coba', $data);
-    }
+        $id_pengajar = $request->user()->id;
 
-    public function postCoba(Request $request)
-    {
         $this->validate($request, [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'alamat' => 'required'
         ]);
 
-        $asatidz = 'hakim';
+        $asatidz = $request->user()->nama;
 
         if ($request->hasFile('image')) {
             $request->file('image')->move('assets/absensi/asatidz_' . date('Y_m_d'), md5($asatidz));
             Absensi::create([
                 'gambar' => 'assets/absensi/asatidz_' . date('Y_m_d'). '/' . md5($asatidz),
-                'alamat' => 'Losarang',
-                'id_asatidz' => 1,
+                'alamat' => $request->alamat,
+                'id_asatidz' => $id_pengajar,
             ]);
-            return redirect('/coba');
+            return response()->json(['message' => 'Data success'], 201);
         } else {
             return response()->json('Image is required!', 401);
         }
+
     }
 }
