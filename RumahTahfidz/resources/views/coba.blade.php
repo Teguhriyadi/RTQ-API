@@ -8,5 +8,5 @@
 </form>
 
 @foreach ($coba as $c)
-<img src="{{ url() . '/' . $c->gambar }}" width="100">
+<img src="{{ $c->gambar }}" width="100">
 @endforeach
