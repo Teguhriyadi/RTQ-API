@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Cabang;
-
+use App\Models\Halaqah;
+use App\Models\LokasiRt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,12 +18,20 @@ class CabangController extends Controller
 
     public function view()
     {
-        $cek = Cabang::get();
+        $halaqah = Halaqah::get();
 
-        if ($cek->count() < 1) {
+        if ($halaqah->count() < 1) {
             $data = "Data tidak ada.";
         } else {
-            $data = $cek;
+            $data = [];
+            foreach ($halaqah as $h) {
+                $lokasi_rt = LokasiRt::where('kode_rt', $h->kode_rt)->first();
+                $data[] = [
+                    'kode_halaqah' => $h->kode_halaqah,
+                    'nama_halaqah' => $h->nama_halaqah,
+                    'lokasi_rt' => $lokasi_rt->lokasi_rt,
+                ];
+            }
         }
 
         return response()->json($data, 200);

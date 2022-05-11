@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cabang;
+use App\Models\Halaqah;
+use App\Models\LokasiRt;
 use App\Models\Santri;
 
 class SantriController extends Controller
@@ -20,7 +22,7 @@ class SantriController extends Controller
         $data = [];
 
         foreach ($santri as $s) {
-            $cabang = Cabang::where('id', $s->id_cabang)->first();
+            $cabang = Halaqah::where('id', $s->id_cabang)->first();
 
             $data[] = [
                 'nama' => $s->nama,
