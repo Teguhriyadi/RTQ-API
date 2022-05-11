@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cabang;
-use App\Models\Siswa;
+use App\Models\Santri;
 
 class SantriController extends Controller
 {
@@ -14,7 +14,7 @@ class SantriController extends Controller
 
     public function view()
     {
-        $santri = Siswa::all();
+        $santri = Santri::all();
 
 
         $data = [];
@@ -39,7 +39,7 @@ class SantriController extends Controller
 
     public function viewByCabang($id_cabang)
     {
-        $santri = Siswa::where('id_cabang', $id_cabang)->get();
+        $santri = Santri::where('id_cabang', $id_cabang)->get();
 
 
         $data = [];
@@ -64,7 +64,7 @@ class SantriController extends Controller
 
     public function viewByCabangNJenjang($id_cabang, $id_jenjang)
     {
-        $santri = Siswa::where('id_cabang', $id_cabang)->get();
+        $santri = Santri::where('id_cabang', $id_cabang)->get();
 
 
         $data = [];

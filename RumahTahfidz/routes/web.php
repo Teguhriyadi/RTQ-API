@@ -45,5 +45,5 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->post('api-v1/absensi/asatidz', 'AbsensiAsatidzController@create');
 });
 
-// $router->get('coba', 'ContohController@coba');
-// $router->post('coba', 'ContohController@postCoba');
+$router->get('coba', 'ContohController@coba');
+$router->post('coba', 'ContohController@postCoba');
