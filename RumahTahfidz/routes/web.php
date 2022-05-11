@@ -40,9 +40,9 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
     $router->get('api-v1/santri/view/all/wali-santri', 'SantriController@viewByWaliSantri');
 
-    $router->get('api-v1/santri/view/{id_cabang}', 'SantriController@viewByCabang');
+    // $router->get('api-v1/santri/view/{id_cabang}', 'SantriController@viewByCabang');
 
-    $router->get('api-v1/santri/view/{id_cabang}/{id_jenjang}', 'SantriController@viewByNCabang');
+    $router->get('api-v1/santri/view/{kode_halaqah}/{id_jenjang}', 'SantriController@viewByHalaqahNJenjang');
 
     $router->post('api-v1/absensi/asatidz', 'AbsensiAsatidzController@create');
 });

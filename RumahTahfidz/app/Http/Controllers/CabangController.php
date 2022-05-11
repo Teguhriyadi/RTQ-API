@@ -28,8 +28,8 @@ class CabangController extends Controller
                 $lokasi_rt = LokasiRt::where('kode_rt', $h->kode_rt)->first();
                 $data[] = [
                     'kode_halaqah' => $h->kode_halaqah,
-                    'nama_halaqah' => $h->nama_halaqah,
-                    'lokasi_rt' => $lokasi_rt->lokasi_rt,
+                    'nama_tempat' => $h->nama_halaqah,
+                    'nama_daerah' => $lokasi_rt->lokasi_rt,
                 ];
             }
         }
