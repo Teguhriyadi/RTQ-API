@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Cabang;
 use App\Models\Halaqah;
+use App\Models\Jenjang;
 use App\Models\LokasiRt;
 use App\Models\Santri;
+use Illuminate\Http\Request;
 
 class SantriController extends Controller
 {
@@ -39,30 +41,23 @@ class SantriController extends Controller
         return response()->json($data);
     }
 
-    // public function viewByCabang($id_cabang)
-    // {
-    //     $santri = Santri::where('id_cabang', $id_cabang)->get();
+    public function viewByWaliSantri(Request $request)
+    {
+        $santri = Santri::where('id_wali', $request->user()->id)->get();
 
+        $data = [];
 
-    //     $data = [];
+        foreach ($santri as $s) {
+            $data[] = [
+                'nis' => $s->nis,
+                'nama' => $s->nama_lengkap,
+                'alamat' => $s->alamat,
+                'foto' => $s->foto,
+            ];
+        }
 
-    //     foreach ($santri as $s) {
-    //         $cabang = Cabang::where('id', $s->id_cabang)->first();
-
-    //         $data[] = [
-    //             'nama' => $s->nama,
-    //             'jenis_kelamin' => $s->jenis_kelamin,
-    //             'alamat' => $s->alamat,
-    //             'gambar' => $s->gambar,
-    //             'nama_ayah' => $s->nama_ayah,
-    //             'nama_ibu' => $s->nama_ibu,
-    //             'no_hp' => $s->no_hp,
-    //             'cabang' => $cabang->nama_cabang,
-    //         ];
-    //     }
-
-    //     return response()->json($data);
-    // }
+        return response()->json($data);
+    }
 
     public function viewByHalaqahNJenjang($kode_halaqah, $id_jenjang)
     {
@@ -71,9 +66,13 @@ class SantriController extends Controller
         $data = [];
 
         foreach ($santri as $s) {
+            $halaqah = Halaqah::where('kode_halaqah', $kode_halaqah)->first();
+            $jenjang = Jenjang::where('id', $id_jenjang)->first();
             $data[] = [
                 'nis' => $s->nis,
-                'nama' => $s->nama_lengkap,
+                'nama_lengkap' => $s->nama_lengkap,
+                'nama_halaqah' => $halaqah->nama_halaqah,
+                'jenjang' => $jenjang->jenjang,
                 'alamat' => $s->alamat,
                 'foto' => $s->foto,
             ];
