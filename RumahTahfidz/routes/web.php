@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\JenjangController;
+use App\Http\Controllers\IuranController;
 use App\Http\Controllers\AbsensiAsatidzController;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
@@ -25,26 +26,28 @@ $router->get('/', function () use ($router) {
     die;
 });
 
-// $router->get('api-v1/contoh/', 'ContohController@coba');
-
 $router->post('api-v1/login/', 'AuthController@login');
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
+    // Detail User
     $router->get('api-v1/profil/user/detail', 'ProfilController@detail');
 
+    // List Jenjang
     $router->get('api-v1/jenjang/view/all', 'JenjangController@view');
 
+    // List Cabang
     $router->get('api-v1/cabang/view/all', 'CabangController@view');
 
+    // List Santri
     $router->get('api-v1/santri/view/all', 'SantriController@view');
-
     $router->get('api-v1/santri/view/all/wali-santri', 'SantriController@viewByWaliSantri');
-
-    // $router->get('api-v1/santri/view/{id_cabang}', 'SantriController@viewByCabang');
-
     $router->get('api-v1/santri/view/{kode_halaqah}/{id_jenjang}', 'SantriController@viewByHalaqahNJenjang');
 
+    // Abesensi Asatidz
     $router->post('api-v1/absensi/asatidz', 'AbsensiAsatidzController@create');
+
+    // List Detail Iuran
+    $router->get('api-v1/iuran/detail/{id}', 'IuranController@detail');
 });
 
 $router->get('coba', 'ContohController@coba');
