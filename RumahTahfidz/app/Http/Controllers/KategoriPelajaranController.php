@@ -32,4 +32,21 @@ class KategoriPelajaranController extends Controller
 
         return response()->json($data, 200);
     }
+
+    public function viewByKategoriNJenjang($id_jenjang, $id_kategori_penilaian)
+    {
+        $santri = KategoriPelajaran::where("id_kategori_penilaian", $id_kategori_penilaian)->where('id_jenjang', $id_jenjang)->get();
+
+        $data = [];
+
+        foreach ($santri as $s) {
+            $data[] = [
+                'id' => $s->id,
+                'id_jenjang' => $s->id_jenjang,
+                'nama_pelajaran' => $s->getPelajaran->nama_pelajaran
+            ];
+        }
+
+        return response()->json($data);
+    }
 }

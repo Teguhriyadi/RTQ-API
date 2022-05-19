@@ -36,6 +36,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('api-v1/kategori_penilaian/view/all', 'KategoriPenilaianController@view');
 
     $router->get('api-v1/kategori/pelajaran/view/all', 'KategoriPelajaranController@view');
+    $router->get('api-v1/kategori/pelajaran/view/{id_kategori_penilaian}/{id_jenjang}', 'KategoriPelajaranController@viewByKategoriNJenjang');
     // List Jenjang
     $router->get('api-v1/jenjang/view/all', 'JenjangController@view');
 
