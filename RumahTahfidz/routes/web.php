@@ -28,7 +28,7 @@ $router->get('/', function () use ($router) {
 
 $router->post('api-v1/login/', 'AuthController@login');
 
-$router->group(['middleware' => 'auth'], function () use ($router) {
+//$router->group(['middleware' => 'auth'], function () use ($router) {
     // Detail User
     $router->get('api-v1/profil/user/detail', 'ProfilController@detail');
 
@@ -48,12 +48,15 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('api-v1/santri/view/all/wali-santri', 'SantriController@viewByWaliSantri');
     $router->get('api-v1/santri/view/{kode_halaqah}/{id_jenjang}', 'SantriController@viewByHalaqahNJenjang');
 
+    // View Nilai
+    $router->get('api-v1/pelajaran/view/{id_jenjang}/{id_kategori_penilaian}', 'PenilaianController@viewById');
+
     // Abesensi Asatidz
     $router->post('api-v1/absensi/asatidz', 'AbsensiAsatidzController@create');
 
     // List Detail Iuran
     $router->get('api-v1/iuran/detail/{id}', 'IuranController@detail');
-});
+//});
 
 $router->get('coba', 'ContohController@coba');
 $router->post('coba', 'ContohController@postCoba');
