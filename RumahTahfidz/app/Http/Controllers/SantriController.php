@@ -69,6 +69,7 @@ class SantriController extends Controller
             $halaqah = Halaqah::where('kode_halaqah', $kode_halaqah)->first();
             $jenjang = Jenjang::where('id', $id_jenjang)->first();
             $data[] = [
+                'id' => $s->id,
                 'nis' => $s->nis,
                 'nama_lengkap' => $s->nama_lengkap,
                 'nama_halaqah' => $halaqah->nama_halaqah,
