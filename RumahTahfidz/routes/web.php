@@ -32,11 +32,11 @@ $router->post('api-v1/login/', 'AuthController@login');
 // Detail User
 $router->get('api-v1/profil/user/detail', 'ProfilController@detail');
 
-// Kategori Penilaian
-$router->get('api-v1/kategori_penilaian/view/all', 'KategoriPenilaianController@view');
+// Kategori Pelajaran
+$router->get('api-v1/kategori/pelajaran/view/all', 'KategoriPenilaianController@view');
 
-$router->get('api-v1/kategori/pelajaran/view/all', 'KategoriPelajaranController@view');
-$router->get('api-v1/kategori/pelajaran/view/{id_kategori_penilaian}/{id_jenjang}', 'KategoriPelajaranController@viewByKategoriNJenjang');
+$router->get('api-v1/pelajaran/view/all', 'KategoriPelajaranController@view');
+$router->get('api-v1/pelajaran/view/{id_kategori_penilaian}/{id_jenjang}', 'KategoriPelajaranController@viewByKategoriNJenjang');
 // List Jenjang
 $router->get('api-v1/jenjang/view/all', 'JenjangController@view');
 
