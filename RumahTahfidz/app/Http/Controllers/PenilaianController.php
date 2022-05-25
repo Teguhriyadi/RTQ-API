@@ -48,4 +48,19 @@ class PenilaianController extends Controller
             return response()->json('Data gagal disimpan', 404);
         }
     }
+
+    public function update_nilai($id, $id_asatidz, Request $request)
+    {
+        $update = Nilai::where('id', $id)->update([
+            'id' => $id,
+            'id_asatidz' => $id_asatidz,
+            'nilai' => $request->nilai,
+        ]);
+
+        if ($update) {
+            return response()->json('Data berhasil disimpan', 200);
+        } else {
+            return response()->json('Data gagal disimpan', 404);
+        }
+    }
 }

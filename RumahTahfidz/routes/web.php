@@ -42,7 +42,8 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     // Kategori Penilaian
     $router->get('api-v1/penilaian/view/{id_pelajaran}/{id_santri}', 'PenilaianController@get_nilai');
     $router->get('api-v1/penilaian/view/{id_pelajaran}/{id_santri}/{id_kategori}/{id_asatidz}', 'PenilaianController@store_nilai');
-    // $router->get('api-v1/penilaian/view/{id_pelajaran}/{id_santri}/{id_kategori}/{id_asatidz}', 'PenilaianController@store_nilai');
+    $router->post('api-v1/penilaian/store/{id_pelajaran}/{id_santri}/{id_kategori}/{id_asatidz}', 'PenilaianController@store_nilai');
+    $router->put('api-v1/penilaian/put/{id}/{id_asatidz}', 'PenilaianController@update_nilai');
 
     // List Jenjang
     $router->get('api-v1/jenjang/view/all', 'JenjangController@view');
