@@ -32,9 +32,9 @@ class KategoriPenilaianController extends Controller
     {
         $data = KategoriPelajaran::where("id_jenjang", $id_jenjang)->where("id_kategori_penilaian", $id_katagori)->get();
 
-        $d = [];
 
         if ($data) {
+            $d = [];
             foreach ($data as $c) {
                 $d[] = [
                     "id" => $c->id,
