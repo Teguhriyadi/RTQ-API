@@ -17,20 +17,18 @@ class PenilaianController extends Controller
         $this->middleware('auth');
     }
 
-    public function viewById($id_jenjang, $id_kategori_penilaian)
+    public function get_nilai($id_pelajaran, $id_santri)
     {
-        $data = KategoriPelajaran::where("id_jenjang", $id_jenjang)->where("id_kategori_penilaian", $id_kategori_penilaian)->get();
-
-        $d = [];
-        foreach ($data as $c) {
-            $d[] = [
-                "id" => $c->id,
-                "id_jenjang" => $c->id_jenjang,
-                "id_kategori" => $c->getKategoriPenilaian->id,
-                "nama_pelajaran" => $c->getPelajaran->nama_pelajaran
+        $get_nilai = Nilai::where('id_kategori_pelajaran', $id_pelajaran)->where('id_santri', $id_santri)->first();
+        if ($get_nilai) {
+            $data = [
+                'id_asatidz' => $get_nilai->id_asatidz,
+                'nilai' => $get_nilai->nilai
             ];
+        } else {
+            $data = "null";
         }
 
-        return response()->json($d, 200);
+        return response()->json($data, 200);
     }
 }

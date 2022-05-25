@@ -37,6 +37,10 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
     $router->get('api-v1/pelajaran/view/all', 'KategoriPelajaranController@view');
     $router->get('api-v1/pelajaran/view/{id_kategori_penilaian}/{id_jenjang}', 'KategoriPelajaranController@viewByKategoriNJenjang');
+
+    // Kategori Penilaian
+    $router->get('api-v1/penilaian/view/{id_pelajaran}/{id_santri}', 'PenilaianController@get_nilai');
+
     // List Jenjang
     $router->get('api-v1/jenjang/view/all', 'JenjangController@view');
 
@@ -50,9 +54,6 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('api-v1/santri/view/all', 'SantriController@view');
     $router->get('api-v1/santri/view/all/wali-santri', 'SantriController@viewByWaliSantri');
     $router->get('api-v1/santri/view/{kode_halaqah}/{id_jenjang}', 'SantriController@viewByHalaqahNJenjang');
-
-    // View Nilai
-    $router->get('api-v1/pelajaran/view/{id_jenjang}/{id_kategori_penilaian}', 'PenilaianController@viewById');
 
     // Abesensi Asatidz
     $router->post('api-v1/absensi/asatidz', 'AbsensiAsatidzController@create');
