@@ -20,6 +20,7 @@ class PenilaianController extends Controller
     public function get_nilai($id_pelajaran, $id_santri)
     {
         $get_nilai = Nilai::where('id_kategori_pelajaran', $id_pelajaran)->where('id_santri', $id_santri)->first();
+
         if ($get_nilai) {
             $data = [
                 'id_asatidz' => $get_nilai->id_asatidz,
@@ -30,5 +31,21 @@ class PenilaianController extends Controller
         }
 
         return response()->json($data, 200);
+    }
+
+    public function store_nilai($id_pelajaran, $id_santri, $id_asatidz, Request $request)
+    {
+        $store = Nilai::create([
+            'id_asatidz' => $id_asatidz,
+            'id_santri' => $id_santri,
+            'id_kategori_pelajaran' => $id_pelajaran,
+            'nilai' => $request->nilai,
+        ]);
+
+        if ($store) {
+            return response()->json('Data berhasil disimpan', 200);
+        } else {
+            return response()->json('Data gagal disimpan', 404);
+        }
     }
 }
