@@ -63,9 +63,9 @@ class SantriController extends Controller
     {
         $santri = Santri::where('kode_halaqah', $kode_halaqah)->where('id_jenjang', $id_jenjang)->get();
 
-        $data = [];
 
-        if ($santri) {
+        if ($santri->count() > 0) {
+            $data = [];
             foreach ($santri as $s) {
                 $halaqah = Halaqah::where('kode_halaqah', $kode_halaqah)->first();
                 $jenjang = Jenjang::where('id', $id_jenjang)->first();
@@ -80,7 +80,7 @@ class SantriController extends Controller
                 ];
             }
         } else {
-            $data = 'null';
+            $data = "Data Santri Kosong";
         }
 
         return response()->json($data);
