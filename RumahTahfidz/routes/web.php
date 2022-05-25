@@ -34,6 +34,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
     // Kategori Pelajaran
     $router->get('api-v1/kategori/pelajaran/view/all', 'KategoriPenilaianController@view');
+    $router->get('api-v1/kategori/pelajaran/view/{id_jenjang}/{id_katagori}', 'KategoriPenilaianController@viewByJenjangNPenilaian');
 
     $router->get('api-v1/pelajaran/view/all', 'KategoriPelajaranController@view');
     $router->get('api-v1/pelajaran/view/{id_kategori_penilaian}/{id_jenjang}', 'KategoriPelajaranController@viewByKategoriNJenjang');
