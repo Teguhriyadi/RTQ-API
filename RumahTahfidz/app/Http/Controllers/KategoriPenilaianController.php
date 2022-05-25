@@ -34,7 +34,8 @@ class KategoriPenilaianController extends Controller
 
         $d = [];
 
-        if ($data) {
+        if ($data->count() > 0) {
+            $d = [];
             foreach ($data as $c) {
                 $d[] = [
                     "id" => $c->id,
@@ -44,10 +45,10 @@ class KategoriPenilaianController extends Controller
                 ];
                 return response()->json($d, 200);
             }
+            return response()->json($d, 200);
         } else {
-            $d = "";
+            $d2 = 'null';
+            return response()->json($d2, 200);
         }
-
-        return response()->json($d, 200);
     }
 }
