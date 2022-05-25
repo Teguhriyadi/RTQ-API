@@ -28,13 +28,13 @@ class KategoriPenilaianController extends Controller
         return response()->json($data, 200);
     }
 
-    public function viewByJenjangNPenilaian($id_jenjang, $id_kategori_penilaian)
+    public function viewByJenjangNPenilaian($id_jenjang, $id_katagori)
     {
-        $data = KategoriPelajaran::where("id_jenjang", $id_jenjang)->where("id_kategori_penilaian", $id_kategori_penilaian)->get();
+        $data = KategoriPelajaran::where("id_jenjang", $id_jenjang)->where("id_kategori_penilaian", $id_katagori)->get();
 
-        $d = [];
 
         if ($data) {
+            $d = [];
             foreach ($data as $c) {
                 $d[] = [
                     "id" => $c->id,
