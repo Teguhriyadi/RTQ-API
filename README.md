@@ -2,7 +2,7 @@
 
 ## Dibangun Menggunakan Teknologi
 
-<img align="left" alt="JavaScript" width="36px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" style="padding-right:10px;" />
+
 <img align="left" alt="php" width="36px" src="https://www.php.net/images/logos/new-php-logo.svg" style="padding-right:10px;" />
 </br>
 </br>

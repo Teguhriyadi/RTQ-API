@@ -32,7 +32,6 @@ class KategoriPenilaianController extends Controller
     {
         $data = KategoriPelajaran::where("id_jenjang", $id_jenjang)->where("id_kategori_penilaian", $id_katagori)->get();
 
-
         if ($data->count() > 0) {
             $d = [];
             foreach ($data as $c) {
@@ -42,6 +41,7 @@ class KategoriPenilaianController extends Controller
                     "id_kategori" => $c->getKategoriPenilaian->id,
                     "nama_pelajaran" => $c->getPelajaran->nama_pelajaran
                 ];
+                return response()->json($d, 200);
             }
             return response()->json($d, 200);
         } else {
