@@ -23,8 +23,10 @@ class PenilaianController extends Controller
 
         if ($get_nilai) {
             $data = [
+                'id_kategori_pelajaran' => $get_nilai->id_kategori_pelajaran,
+                'id_santri' => $get_nilai->id_santri,
                 'id_asatidz' => $get_nilai->id_asatidz,
-                'nilai' => $get_nilai->nilai
+                'nilai' => $get_nilai->nilai,
             ];
         } else {
             $data = "null";
