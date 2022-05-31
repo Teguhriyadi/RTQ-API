@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\JenjangController;
 use App\Http\Controllers\IuranController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AbsensiAsatidzController;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
@@ -26,11 +27,16 @@ $router->get('/', function () use ($router) {
     die;
 });
 
+// Login
 $router->post('api-v1/login/', 'AuthController@login');
+
+// Role
+$router->get('api-v1/role/view', 'RoleController@view');
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
     // Detail User
     $router->get('api-v1/profil/user/detail', 'ProfilController@detail');
+
 
     // Kategori Pelajaran
     $router->get('api-v1/kategori/pelajaran/view/all', 'KategoriPenilaianController@view');
