@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HakAkses;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Santri;
@@ -13,7 +14,6 @@ class ProfilController extends Controller
 {
     public function __construct()
     {
-
     }
 
     public function detail(Request $request)
@@ -24,9 +24,10 @@ class ProfilController extends Controller
             return response()->json(['message' => 'Get data failed!'], 401);
         }
 
-        $role = Role::find($user->id_role);
+        $hak_akses = HakAkses::where('id', $user->id_hak_akses)->first();
+        $role = Role::where('id', $hak_akses->id_role)->first();
 
-        if ($user->id_role == 3) {
+        if ($hak_akses->id_role == 3) {
             $data = [
                 'nama' => $user->nama,
                 'email' => $user->email,
