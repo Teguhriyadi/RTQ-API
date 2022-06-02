@@ -59,23 +59,20 @@ class AuthController extends Controller
         } else {
             return response()->json(['message' => 'Your account not found!'], 404);
         }
+    }
 
-        // $cekPassword = Hash::check($password, $user->password);
+    public function logout($no_hp)
+    {
+        $user = User::where('no_hp', $no_hp)->first();
 
-        // if (!$cekPassword) {
-        //     return response()->json(['message' => 'Login failed!'], 401);
-        // }
+        if ($user) {
+            $user->update([
+                'token' => NULL
+            ]);
 
-        // $token = bin2hex(random_bytes(40));
-
-        // $user->update([
-        //     'token' => $token
-        // ]);
-
-        // $role = Role::where('id', $user->id_role)->first();
-
-        // $user['keterangan'] = $role->keterangan;
-
-        // return response()->json($user);
+            return response()->json(['message' => 'Logout successfully!'], 404);
+        } else {
+            return response()->json(['message' => 'Your account not found!'], 404);
+        }
     }
 }
