@@ -70,7 +70,7 @@ class AuthController extends Controller
                 'token' => NULL
             ]);
 
-            return response()->json(['message' => 'Logout successfully!'], 404);
+            return response()->json(['message' => 'Logout successfully!'], 200);
         } else {
             return response()->json(['message' => 'Your account not found!'], 404);
         }
