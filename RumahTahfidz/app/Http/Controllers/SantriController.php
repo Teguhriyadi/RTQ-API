@@ -49,9 +49,12 @@ class SantriController extends Controller
 
         foreach ($santri as $s) {
             $data[] = [
+                'id' => $s->id,
                 'nis' => $s->nis,
                 'nama' => $s->nama_lengkap,
                 'alamat' => $s->alamat,
+                'jenjang' => $s->id_jenjang,
+                'halaqah' => $s->kode_halaqah,
                 'foto' => $s->foto,
             ];
         }
