@@ -34,9 +34,11 @@ $router->post('api-v1/login/', 'AuthController@login');
 $router->get('api-v1/role/view', 'RoleController@view');
 
 $router->group(['middleware' => 'auth'], function () use ($router) {
+    // Logout
+    $router->post('api-v1/logout/{no_hp}', 'AuthController@logout');
+
     // Detail User
     $router->get('api-v1/profil/user/detail', 'ProfilController@detail');
-
 
     // Kategori Pelajaran
     $router->get('api-v1/kategori/pelajaran/view/all', 'KategoriPenilaianController@view');
