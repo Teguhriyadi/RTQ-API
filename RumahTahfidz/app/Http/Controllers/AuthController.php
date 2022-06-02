@@ -34,7 +34,7 @@ class AuthController extends Controller
                     $cekPassword = Hash::check($password, $user->password);
 
                     if (!$cekPassword) {
-                        return response()->json(['message' => 'Login failed!'], 404);
+                        return response()->json(['message' => 'Your password wrong!'], 404);
                     }
 
                     $token = bin2hex(random_bytes(40));
@@ -51,13 +51,13 @@ class AuthController extends Controller
 
                     return response()->json($user);
                 } else {
-                    return response()->json(['message' => 'Login failed!'], 404);
+                    return response()->json(['message' => 'Your account not have access!'], 404);
                 }
             } else {
-                return response()->json(['message' => 'Login failed!'], 404);
+                return response()->json(['message' => 'Your account not active!'], 404);
             }
         } else {
-            return response()->json(['message' => 'Login failed!'], 404);
+            return response()->json(['message' => 'Your account not found!'], 404);
         }
 
         // $cekPassword = Hash::check($password, $user->password);

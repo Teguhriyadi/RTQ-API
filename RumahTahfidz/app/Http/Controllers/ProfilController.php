@@ -38,13 +38,14 @@ class ProfilController extends Controller
                 'hak_akses' => $role->keterangan,
                 'token' => $user->token,
                 'jenis_kelamin' => $user->jenis_kelamin,
+                'nik' => '',
+                'no_kk' => '',
             ];
         } else {
             $wali_santri = WaliSantri::where('id', $user->id)->first();
-            $santri = Santri::where('id_wali', $wali_santri->id)->first();
             $data = [
-                'nama_lengkap' => $santri->nama_lengkap,
-                'nama_panggilan' => $santri->nama_panggilan,
+                'nama' => $user->nama,
+                'email' => $user->email,
                 'alamat' => $user->alamat,
                 'gambar' => $user->gambar,
                 'tempat_lahir' => $user->tempat_lahir,
