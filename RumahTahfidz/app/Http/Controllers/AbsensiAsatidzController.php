@@ -24,7 +24,13 @@ class AbsensiAsatidzController extends Controller
         $cek = Absensi::where("id_asatidz", Auth::user()->id)->whereDate("created_at", $tanggal)->first();
 
         if ($cek) {
-            return response()->json($cek);
+            $data = [
+                "id" => $cek->id,
+                "gambar" => $cek->gambar,
+                "alamat" => $cek->alamat,
+                "tanggal_absen" => $cek->created_at
+            ];
+            return response()->json($data);
         } else {
             return null;
         }
