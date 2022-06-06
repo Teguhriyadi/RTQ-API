@@ -60,7 +60,14 @@ class AbsensiAsatidzController extends Controller
         if ($cek->count() < 1) {
             $data = "Data tidak ada.";
         } else {
-            $data = $cek;
+            foreach ($cek as $d) {
+                $data[] = [
+                    "id" => $d->id,
+                    "gambar" => $d->gambar,
+                    "alamat" => $d->alamat,
+                    "tanggal_absen" => $d->created_at,
+                ];
+            }
         }
 
         return response()->json($data, 200);
