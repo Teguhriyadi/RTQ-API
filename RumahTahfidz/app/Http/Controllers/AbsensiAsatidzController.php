@@ -16,6 +16,11 @@ class AbsensiAsatidzController extends Controller
         $this->middleware('auth');
     }
 
+    public function show($id)
+    {
+        $asatidz = Absensi::where('id_asatidz', $id);
+    }
+
     public function create(Request $request)
     {
         $this->validate($request, [
