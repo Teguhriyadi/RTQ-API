@@ -8,12 +8,26 @@ use Illuminate\Support\Str;
 use Image;
 
 use App\Models\Absensi;
+use Illuminate\Support\Facades\Auth;
 
 class AbsensiAsatidzController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        $tanggal = date("Y-m-d");
+
+        $cek = Absensi::where("id_asatidz", Auth::user()->id)->whereDate("created_at", $tanggal)->first();
+
+        if ($cek) {
+            return response()->json($cek);
+        } else {
+            return null;
+        }
     }
 
     public function create(Request $request)
@@ -37,5 +51,18 @@ class AbsensiAsatidzController extends Controller
         } else {
             return response()->json('Image is required!', 401);
         }
+    }
+
+    public function rekap()
+    {
+        $cek = Absensi::get();
+
+        if ($cek->count() < 1) {
+            $data = "Data tidak ada.";
+        } else {
+            $data = $cek;
+        }
+
+        return response()->json($data, 200);
     }
 }

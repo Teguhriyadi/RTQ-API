@@ -68,6 +68,8 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('api-v1/santri/view/{kode_halaqah}/{id_jenjang}', 'SantriController@viewByHalaqahNJenjang');
 
     // Abesensi Asatidz
+    $router->get('api-v1/absensi/asatidz', 'AbsensiAsatidzController@index');
+    $router->get('api-v1/absensi/asatidz/rekap', 'AbsensiAsatidzController@rekap');
     $router->post('api-v1/absensi/asatidz', 'AbsensiAsatidzController@create');
 
     // List Detail Iuran
