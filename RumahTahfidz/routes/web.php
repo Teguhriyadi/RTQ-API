@@ -74,6 +74,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
     // List Detail Iuran
     $router->get('api-v1/iuran/detail/{id}', 'IuranController@detail');
+    $router->get('api-v1/iuran/store', 'IuranController@store');
 });
 
 $router->get('coba', 'ContohController@coba');

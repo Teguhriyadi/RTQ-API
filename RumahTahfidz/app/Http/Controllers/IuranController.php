@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Iuran;
 use App\Models\Santri;
+use Illuminate\Http\Request;
 
 class IuranController extends Controller
 {
@@ -34,5 +35,29 @@ class IuranController extends Controller
         }
 
         return response()->json($data, 200);
+    }
+
+    public function store(Request $request)
+    {
+        // nominal
+        // id_santri
+        // id_asatidz
+        // bukti = ''
+        // id_status_validasi
+        // tanggal
+        $cek = Iuran::create([
+            'nominal' => $request->nominal,
+            'id_santri' => $request->id_santri,
+            'id_users' => $request->id_asatidz,
+            'bukti' => 'http://rtq-freelance.my.id/gambar/gambar_user.png',
+            'id_status_validasi' => 2,
+            'tanggal' => date('Y-m-d'),
+        ]);
+
+        if ($cek) {
+            return response()->json('Data berhasil disimpan', 200);
+        } else {
+            return response()->json('Data gagal disimpan', 404);
+        }
     }
 }
