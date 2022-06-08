@@ -30,6 +30,7 @@ class IuranController extends Controller
                 'nama_lengkap' => $santri->nama_lengkap,
                 'tanggal_pembayaran' => $i->tanggal,
                 'bukti_pembayaran' => $i->bukti,
+                'nominal_pembayaran' => $i->nominal,
                 'status_pembayaran' => $i->status_validasi,
             ];
         }
@@ -37,14 +38,15 @@ class IuranController extends Controller
         return response()->json($data, 200);
     }
 
+    public function cekNominal($id_iuran)
+    {
+        $santri = Iuran::where('id', $id_iuran)->first();
+
+        return response()->json($santri->nominal, 200);
+    }
+
     public function store(Request $request)
     {
-        // nominal
-        // id_santri
-        // id_asatidz
-        // bukti = ''
-        // id_status_validasi
-        // tanggal
         $cek = Iuran::create([
             'nominal' => $request->nominal,
             'id_santri' => $request->id_santri,
