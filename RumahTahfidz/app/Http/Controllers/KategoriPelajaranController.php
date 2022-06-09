@@ -40,12 +40,17 @@ class KategoriPelajaranController extends Controller
         if ($santri->count() < 1) {
             return null;
         } else {
-            foreach ($santri as $s) {
-                $data = [
-                    'id' => $s->id,
-                    'id_jenjang' => $s->id_jenjang,
-                    'nama_pelajaran' => $s->getPelajaran->nama_pelajaran
-                ];
+            if ($santri) {
+                foreach ($santri as $s) {
+                    $data[] = [
+                        'id' => $s->id,
+                        'id_jenjang' => $s->id_jenjang,
+                        'id_kategori' => $s->getKategoriPenilaian->id,
+                        'nama_pelajaran' => $s->getPelajaran->nama_pelajaran
+                    ];
+                }
+            } else {
+                return null;
             }
         }
 
