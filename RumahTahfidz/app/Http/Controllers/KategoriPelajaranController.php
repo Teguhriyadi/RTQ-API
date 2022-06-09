@@ -37,14 +37,16 @@ class KategoriPelajaranController extends Controller
     {
         $santri = KategoriPelajaran::where("id_kategori_penilaian", $id_kategori_penilaian)->where('id_jenjang', $id_jenjang)->get();
 
-        $data = [];
-
-        foreach ($santri as $s) {
-            $data[] = [
-                'id' => $s->id,
-                'id_jenjang' => $s->id_jenjang,
-                'nama_pelajaran' => $s->getPelajaran->nama_pelajaran
-            ];
+        if ($santri->count() < 1) {
+            return null;
+        } else {
+            foreach ($santri as $s) {
+                $data = [
+                    'id' => $s->id,
+                    'id_jenjang' => $s->id_jenjang,
+                    'nama_pelajaran' => $s->getPelajaran->nama_pelajaran
+                ];
+            }
         }
 
         return response()->json($data);
