@@ -12,4 +12,9 @@ class Nilai extends Model
     protected $table = "tb_nilai";
 
     protected $guarded = [''];
+
+    public function getKategoriPelajaran()
+    {
+        return $this->belongsTo("App\Models\KategoriPelajaran", "id_kategori_pelajaran", "id");
+    }
 }

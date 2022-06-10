@@ -14,4 +14,9 @@ class KategoriPenilaian extends Model
     protected $guarded = [''];
 
     public $timestamps = false;
+
+    public function getPelajaran()
+    {
+        return $this->belongsTo("App\Models\Pelajaran", "id_pelajaran", "id");
+    }
 }
