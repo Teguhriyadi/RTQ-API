@@ -39,7 +39,7 @@ class IuranController extends Controller
     {
         $santri = Iuran::where('id_santri', $id_santri)->first();
 
-        return response()->json(['nominal'=>$santri->nominal], 200);
+        return response()->json(['nominal' => $santri->nominal], 200);
     }
 
     public function store(Request $request)
