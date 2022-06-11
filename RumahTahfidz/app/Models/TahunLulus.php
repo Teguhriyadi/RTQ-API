@@ -5,14 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class TahunLulus extends Model
 {
     use HasFactory;
-
-    protected $table = "tb_role";
-
-    public $timestamps = false;
-
-    protected $fillable = ["keterangan"];
-
 }

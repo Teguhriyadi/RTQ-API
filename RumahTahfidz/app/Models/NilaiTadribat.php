@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Iuran extends Model
+class NilaiTadribat extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_iuran";
+    protected $table = "tb_nilai_tadribat";
 
     protected $guarded = [''];
 
@@ -18,8 +18,8 @@ class Iuran extends Model
         return $this->belongsTo("App\Models\Santri", "id_santri", "id");
     }
 
-    public function getStatusValidasi()
+    public function getPelajaran()
     {
-        return $this->belongsTo("App\Models\StatusValidasi", "id_status_validasi", "id");
+        return $this->belongsTo("App\Models\KategoriPelajaranTadribat", "id_pelajaran_tadribat", "id");
     }
 }

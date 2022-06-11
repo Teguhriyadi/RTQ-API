@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KategoriPenilaian extends Model
+class NilaiKategori extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_kategori_penilaian";
+    protected $table = "tb_nilai_kategori";
 
     protected $guarded = [''];
-
-    public $timestamps = false;
+    
 }

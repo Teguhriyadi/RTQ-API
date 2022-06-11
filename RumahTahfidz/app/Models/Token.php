@@ -5,13 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class KategoriPenilaian extends Model
+class Token extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_kategori_penilaian";
-
-    protected $guarded = [''];
-
-    public $timestamps = false;
+    protected $table = "personal_access_token";
+    
 }
