@@ -35,11 +35,11 @@ class IuranController extends Controller
         return response()->json($data, 200);
     }
 
-    public function cekNominal($id_iuran)
+    public function cekNominal($id_santri)
     {
-        $santri = Iuran::where('id', $id_iuran)->first();
+        $santri = Iuran::where('id_santri', $id_santri)->first();
 
-        return response()->json($santri->nominal, 200);
+        return response()->json(['nominal'=>$santri->nominal], 200);
     }
 
     public function store(Request $request)
