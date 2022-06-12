@@ -39,7 +39,7 @@ class AbsensiAsatidzController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'alamat' => 'required'
         ]);
 
