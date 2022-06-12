@@ -17,4 +17,9 @@ class Nilai extends Model
     {
         return $this->belongsTo("App\Models\KategoriPelajaran", "id_kategori_pelajaran", "id");
     }
+
+    public function getSantri()
+    {
+        return $this->belongsTo("App\Models\Santri", "id_santri", "id");
+    }
 }

@@ -21,17 +21,14 @@ class IuranController extends Controller
     public function detail($id)
     {
         $iuran = Iuran::where('id_santri', $id)->get();
-        $santri = Santri::where('id', $id)->first();
 
         $data = [];
 
         foreach ($iuran as $i) {
             $data[] = [
-                'nama_lengkap' => $santri->nama_lengkap,
                 'tanggal_pembayaran' => $i->tanggal,
-                'bukti_pembayaran' => $i->bukti,
                 'nominal_pembayaran' => $i->nominal,
-                'status_pembayaran' => $i->status_validasi,
+                'status_pembayaran' => $i->getStatusValidasi->status
             ];
         }
 
@@ -42,7 +39,7 @@ class IuranController extends Controller
     {
         $santri = Iuran::where('id_santri', $id_santri)->first();
 
-        return response()->json(['nominal'=>$santri->nominal], 200);
+        return response()->json(['nominal' => $santri->nominal], 200);
     }
 
     public function store(Request $request)

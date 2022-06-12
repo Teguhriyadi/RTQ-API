@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Asatidz extends Model
+class StrukturOrganisasi extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_asatidz";
+    protected $table = "tb_struktur_organisasi";
 
     protected $guarded = [''];
 
-    public function getUser()
+    public function getJabatan()
     {
-        return $this->belongsTo("App\Models\User", "id", "id");
+        return $this->belongsTo("App\Models\Jabatan", "id_jabatan", "id");
     }
 }
