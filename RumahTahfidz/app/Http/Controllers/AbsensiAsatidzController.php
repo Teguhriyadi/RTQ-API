@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Image;
 
 use App\Models\Absensi;
+use App\Models\AbsensiAsatidz;
 use Illuminate\Support\Facades\Auth;
 
 class AbsensiAsatidzController extends Controller
@@ -39,15 +40,14 @@ class AbsensiAsatidzController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'gambar' => 'required',
             'alamat' => 'required'
         ]);
 
         $asatidz = Str::random(32);
 
-        if ($request->hasFile('gambar')) {
-            $request->file('gambar')->move('assets/absensi/asatidz/' . date('Y_m_d'), $asatidz);
-            Absensi::create([
+        if ($request->gambar) {
+            AbsensiAsatidz::create([
                 'gambar' => url() . '/assets/absensi/asatidz/' . date('Y_m_d') . '/' . $asatidz,
                 'alamat' => $request->alamat,
                 'id_asatidz' => $request->id_asatidz,
