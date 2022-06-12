@@ -45,8 +45,8 @@ class AbsensiAsatidzController extends Controller
 
         $asatidz = Str::random(32);
 
-        if ($request->hasFile('image')) {
-            $request->file('image')->move('assets/absensi/asatidz/' . date('Y_m_d'), $asatidz);
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->move('assets/absensi/asatidz/' . date('Y_m_d'), $asatidz);
             Absensi::create([
                 'gambar' => url() . '/assets/absensi/asatidz/' . date('Y_m_d') . '/' . $asatidz,
                 'alamat' => $request->alamat,
