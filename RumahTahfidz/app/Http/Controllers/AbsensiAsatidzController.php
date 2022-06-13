@@ -62,7 +62,7 @@ class AbsensiAsatidzController extends Controller
 
     public function rekap()
     {
-        $cek = Absensi::get();
+        $cek = AbsensiAsatidz::get();
 
         if ($cek->count() < 1) {
             $data = "Data tidak ada.";
