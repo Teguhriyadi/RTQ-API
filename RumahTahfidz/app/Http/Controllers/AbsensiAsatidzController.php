@@ -22,7 +22,7 @@ class AbsensiAsatidzController extends Controller
     {
         $tanggal = date("Y-m-d");
 
-        $cek = Absensi::where("id_asatidz", Auth::user()->id)->whereDate("created_at", $tanggal)->first();
+        $cek = AbsensiAsatidz::where("id_asatidz", Auth::user()->id)->whereDate("created_at", $tanggal)->first();
 
         if ($cek) {
             $data = [
