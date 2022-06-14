@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Image;
 
 use App\Models\Absensi;
+use App\Models\AbsensiAsatidz;
 use Illuminate\Support\Facades\Auth;
 
 class AbsensiAsatidzController extends Controller
@@ -21,7 +22,7 @@ class AbsensiAsatidzController extends Controller
     {
         $tanggal = date("Y-m-d");
 
-        $cek = Absensi::where("id_asatidz", Auth::user()->id)->whereDate("created_at", $tanggal)->first();
+        $cek = AbsensiAsatidz::where("id_asatidz", Auth::user()->id)->whereDate("created_at", $tanggal)->first();
 
         if ($cek) {
             $data = [
@@ -39,15 +40,15 @@ class AbsensiAsatidzController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'gambar' => 'required',
             'alamat' => 'required'
         ]);
 
         $asatidz = Str::random(32);
 
-        if ($request->hasFile('image')) {
-            $request->file('image')->move('assets/absensi/asatidz/' . date('Y_m_d'), $asatidz);
-            Absensi::create([
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->move('assets/absensi/asatidz/' . date('Y_m_d'), $asatidz);
+            AbsensiAsatidz::create([
                 'gambar' => url() . '/assets/absensi/asatidz/' . date('Y_m_d') . '/' . $asatidz,
                 'alamat' => $request->alamat,
                 'id_asatidz' => $request->id_asatidz,
@@ -61,7 +62,7 @@ class AbsensiAsatidzController extends Controller
 
     public function rekap()
     {
-        $cek = Absensi::get();
+        $cek = AbsensiAsatidz::get();
 
         $data = [];
 
