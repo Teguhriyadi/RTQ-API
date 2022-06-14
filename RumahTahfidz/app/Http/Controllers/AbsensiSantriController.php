@@ -23,17 +23,21 @@ class AbsensiSantriController extends Controller
         $date = date('Y-m-d');
         $santri = Santri::where("id_jenjang", $id_jenjang)->where("kode_halaqah", $kode_halaqah)->get();
 
+        $data = [];
+
         foreach ($santri as $s) {
 
             $absen = Absensi::whereDate("created_at", $date)->where("id_santri", $s->id)->get();
 
             foreach ($absen as $d) {
-                echo $d->id_santri;
+                $data[] = [
+                    'id_absensi' => $d->id,
+                    'keterangan_absensi' => $d->keterangan,
+                ];
             }
         }
 
-
-        //return response()->json($coba);
+        return response()->json($data);
     }
 
     public function create(Request $request, $id_jenjang, $kode_halaqah)
