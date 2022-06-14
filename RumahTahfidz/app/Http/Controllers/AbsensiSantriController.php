@@ -18,10 +18,10 @@ class AbsensiSantriController extends Controller
         $this->middleware('auth');
     }
 
-    public function create(Request $request)
+    public function create(Request $request, $id_jenjang, $kode_halaqah)
     {
         $date = date('Y-m-d');
-        $santri = Santri::get();
+        $santri = Santri::where("id_jenjang", $id_jenjang)->where("kode_halaqah", $kode_halaqah)->get();
 
         foreach ($santri as $s) {
             $absensi = Absensi::where("id_santri", $s->id)->whereDate("created_at", $date)->first();
@@ -44,7 +44,8 @@ class AbsensiSantriController extends Controller
     public function edit($id, Request $request)
     {
         Absensi::where("id", $id)->update([
-            "id_status_absen" => $request->id_status_absen
+            "id_status_absen" => $request->id_status_absen,
+            "keterangan" => $request->keterangan,
         ]);
 
         return response()->json('Data berhasil disimpan', 200);
