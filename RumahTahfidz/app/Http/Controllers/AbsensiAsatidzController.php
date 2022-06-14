@@ -32,7 +32,7 @@ class AbsensiAsatidzController extends Controller
             ];
             return response()->json($data);
         } else {
-            return null;
+            return [];
         }
     }
 
@@ -63,17 +63,15 @@ class AbsensiAsatidzController extends Controller
     {
         $cek = Absensi::get();
 
-        if ($cek->count() < 1) {
-            $data = "Data tidak ada.";
-        } else {
-            foreach ($cek as $d) {
-                $data[] = [
-                    "id" => $d->id,
-                    "gambar" => $d->gambar,
-                    "alamat" => $d->alamat,
-                    "tanggal_absen" => $d->created_at,
-                ];
-            }
+        $data = [];
+
+        foreach ($cek as $d) {
+            $data[] = [
+                "id" => $d->id,
+                "gambar" => $d->gambar,
+                "alamat" => $d->alamat,
+                "tanggal_absen" => $d->created_at,
+            ];
         }
 
         return response()->json($data, 200);
