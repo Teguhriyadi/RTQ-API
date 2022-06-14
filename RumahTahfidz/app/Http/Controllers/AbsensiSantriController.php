@@ -18,6 +18,24 @@ class AbsensiSantriController extends Controller
         $this->middleware('auth');
     }
 
+    public function index($id_jenjang, $kode_halaqah)
+    {
+        $date = date('Y-m-d');
+        $santri = Santri::where("id_jenjang", $id_jenjang)->where("kode_halaqah", $kode_halaqah)->get();
+
+        foreach ($santri as $s) {
+
+            $absen = Absensi::whereDate("created_at", $date)->where("id_santri", $s->id)->get();
+
+            foreach ($absen as $d) {
+                echo $d->id_santri;
+            }
+        }
+
+
+        //return response()->json($coba);
+    }
+
     public function create(Request $request, $id_jenjang, $kode_halaqah)
     {
         $date = date('Y-m-d');
