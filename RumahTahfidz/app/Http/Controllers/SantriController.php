@@ -53,7 +53,8 @@ class SantriController extends Controller
                 'nis' => $s->nis,
                 'nama' => $s->nama_lengkap,
                 'alamat' => $s->alamat,
-                'jenjang' => $s->id_jenjang,
+                'id_jenjang' => $s->id_jenjang,
+                'jenjang' => $s->getJenjang->jenjang,
                 'halaqah' => $s->kode_halaqah,
                 'foto' => $s->foto,
             ];
