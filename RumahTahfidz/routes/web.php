@@ -72,6 +72,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get("api-v1/absensi/santri/{id_jenjang}/{kode_halaqah}", "AbsensiSantriController@index");
     $router->post("api-v1/absensi/santri/{id_jenjang}/{kode_halaqah}", "AbsensiSantriController@create");
     $router->put("api-v1/absensi/santri/{id}", "AbsensiSantriController@edit");
+    $router->get("api-v1/absensi/santri/{id}", "AbsensiSantriController@get_status");
 
     // Abesensi Asatidz
     $router->get('api-v1/absensi/asatidz', 'AbsensiAsatidzController@index');

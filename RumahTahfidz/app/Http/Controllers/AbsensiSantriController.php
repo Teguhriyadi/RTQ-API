@@ -76,4 +76,22 @@ class AbsensiSantriController extends Controller
 
         return response()->json('Data berhasil disimpan', 200);
     }
+
+    public function get_status($id)
+    {
+        $date = date("Y-m-d");
+
+        $absen = Absensi::where("id_santri", $id)->whereDate("created_at", $date)->first();
+
+        $data = [];
+        if ($absen->count() < 1) {
+            return null;
+        } else {
+            $data[] = [
+                "id_absensi" => 1,
+                "keterangan" => $absen->keterangan
+            ];
+        }
+        return response()->json($data);
+    }
 }
