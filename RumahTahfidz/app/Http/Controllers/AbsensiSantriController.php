@@ -71,7 +71,7 @@ class AbsensiSantriController extends Controller
     {
         Absensi::where("id", $id)->update([
             "id_status_absen" => $request->id_status_absen,
-            "keterangan" => $request->keterangan,
+            "keterangan" => "ok",
         ]);
 
         return response()->json('Data berhasil disimpan', 200);
