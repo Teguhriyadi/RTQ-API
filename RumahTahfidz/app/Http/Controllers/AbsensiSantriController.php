@@ -88,7 +88,7 @@ class AbsensiSantriController extends Controller
         } else {
             $data = [
                 "id_absensi" => $absen->id,
-                "keterangan" => $absen->keterangan
+                "keterangan" => $absen->getStatusAbsen->keterangan_absen
             ];
         }
         return response()->json($data);
