@@ -29,11 +29,15 @@ class AbsensiSantriController extends Controller
 
             $absen = Absensi::whereDate("created_at", $date)->where("id_santri", $s->id)->get();
 
-            foreach ($absen as $d) {
-                $data[] = [
-                    'id_absensi' => $d->id,
-                    'keterangan_absensi' => $d->keterangan,
-                ];
+            if ($absen->count() < 1) {
+                return null;
+            } else {
+                foreach ($absen as $d) {
+                    $data[] = [
+                        'id_absensi' => $d->id,
+                        'keterangan_absensi' => $d->keterangan,
+                    ];
+                }
             }
         }
 
