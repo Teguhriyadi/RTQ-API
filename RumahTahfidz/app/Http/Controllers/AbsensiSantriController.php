@@ -87,7 +87,7 @@ class AbsensiSantriController extends Controller
             return null;
         } else {
             $data = [
-                "id_absensi" => 1,
+                "id_absensi" => $absen->id,
                 "keterangan" => $absen->keterangan
             ];
         }
