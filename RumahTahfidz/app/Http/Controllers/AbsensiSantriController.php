@@ -83,11 +83,10 @@ class AbsensiSantriController extends Controller
 
         $absen = Absensi::where("id_santri", $id)->whereDate("created_at", $date)->first();
 
-        $data = [];
         if ($absen->count() < 1) {
             return null;
         } else {
-            $data[] = [
+            $data = [
                 "id_absensi" => 1,
                 "keterangan" => $absen->keterangan
             ];
