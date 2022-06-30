@@ -52,6 +52,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('api-v1/penilaian/view/{id_pelajaran}/{id_santri}/{id_kategori}/{id_asatidz}', 'PenilaianController@store_nilai');
     $router->post('api-v1/penilaian/store/{id_pelajaran}/{id_santri}/{id_kategori}/{id_asatidz}', 'PenilaianController@store_nilai');
     $router->put('api-v1/penilaian/put/{id}/{id_asatidz}', 'PenilaianController@update_nilai');
+    $router->get('api-v1/penilaian/view/{id_santri}', 'PenilaianController@viewNilaiByWali');
 
     // List Jenjang
     $router->get('api-v1/jenjang/view/all', 'JenjangController@view');
@@ -66,6 +67,12 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('api-v1/santri/view/all', 'SantriController@view');
     $router->get('api-v1/santri/view/all/wali-santri', 'SantriController@viewByWaliSantri');
     $router->get('api-v1/santri/view/{kode_halaqah}/{id_jenjang}', 'SantriController@viewByHalaqahNJenjang');
+
+    // Absensi Santri
+    $router->get("api-v1/absensi/santri/{id_jenjang}/{kode_halaqah}", "AbsensiSantriController@index");
+    $router->post("api-v1/absensi/santri/{id_jenjang}/{kode_halaqah}", "AbsensiSantriController@create");
+    $router->put("api-v1/absensi/santri/{id}", "AbsensiSantriController@edit");
+    $router->get("api-v1/absensi/santri/{id}", "AbsensiSantriController@get_status");
 
     // Abesensi Asatidz
     $router->get('api-v1/absensi/asatidz', 'AbsensiAsatidzController@index');

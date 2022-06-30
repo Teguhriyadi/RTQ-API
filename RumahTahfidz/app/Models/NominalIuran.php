@@ -5,18 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LokasiRt extends Model
+class NominalIuran extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_lokasi_rt";
+    protected $table = "tb_nominal_iuran";
 
     protected $guarded = [''];
 
     public $timestamps = false;
-
-    public function getHalaqah()
-    {
-        return $this->hasOne(Halaqah::class, 'kode_rt', 'kode_rt');
-    }
 }

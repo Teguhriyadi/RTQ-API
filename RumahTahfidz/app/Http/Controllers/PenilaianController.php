@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Jenjang;
 use App\Models\KategoriPelajaran;
+use App\Models\Santri;
 use App\Models\Nilai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,5 +66,21 @@ class PenilaianController extends Controller
         } else {
             return response()->json('Data gagal disimpan', 404);
         }
+    }
+
+    public function viewNilaiByWali($id_santri)
+    {
+        $nilai_santri = Nilai::where("id_santri", $id_santri)->get();
+
+        foreach ($nilai_santri as $nilai) {
+            $data_kategori = KategoriPelajaran::where("id", $nilai->id_kategori_pelajaran)->first();
+            $data[] = [
+                "nilai" => $nilai->nilai,
+                "pelajaran" => $data_kategori->getPelajaran->nama_pelajaran
+            ];
+        }
+
+
+        return response()->json($data);
     }
 }

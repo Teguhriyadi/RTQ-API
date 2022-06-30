@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Jabatan extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_role";
+    protected $table = "tb_jabatan";
 
-    public $timestamps = false;
-
-    protected $fillable = ["keterangan"];
-
+    protected $guarded = [''];
 }

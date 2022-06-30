@@ -5,25 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Halaqah extends Model
+class AdminLokasiRt extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_halaqah";
+    protected $table = "tb_admin_lokasi_rt";
+
+    protected $with = ["getLokasiRt", "getUser"];
 
     protected $guarded = [''];
-
-    protected $with = ["getLokasiRt"];
-
-    public $timestamps = false;
 
     public function getLokasiRt()
     {
         return $this->belongsTo("App\Models\LokasiRt", "kode_rt", "kode_rt")->withDefault(["lokasi_rt" => "NULL"]);
     }
 
-    public function getSantri()
+    public function getUser()
     {
-        return $this->hasMany(Santri::class, 'kode_halaqah', 'kode_halaqah');
+        return $this->hasOne("App\Models\User", "id", "id")->withDefault(["no_hp" => "NULL"]);
     }
 }

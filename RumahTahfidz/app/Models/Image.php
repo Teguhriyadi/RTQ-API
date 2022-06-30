@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Image extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_role";
+    protected $table = "tb_image";
 
-    public $timestamps = false;
+    protected $guarded = [''];
 
-    protected $fillable = ["keterangan"];
-
+    
 }

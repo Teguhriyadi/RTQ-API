@@ -5,14 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Token extends Model
 {
     use HasFactory;
 
-    protected $table = "tb_role";
-
-    public $timestamps = false;
-
-    protected $fillable = ["keterangan"];
-
+    protected $table = "personal_access_token";
+    
 }
