@@ -24,9 +24,9 @@ use App\Http\Controllers\AbsensiAsatidzController;
 */
 
 $router->get('/', function () use ($router) {
-    // return $router->app->version();
-    header('Location: http://rtq-freelance.my.id/');
-    die;
+    return $router->app->version();
+//     header('Location: http://rtq-freelance.my.id/');
+//     die;
 });
 
 // Login
